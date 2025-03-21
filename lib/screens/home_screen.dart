@@ -3,6 +3,7 @@ import 'package:camera/camera.dart';
 import 'package:vector_math/vector_math_64.dart' as vm;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:sensors_plus/sensors_plus.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _setupCamera();
     _fetchIssData();
+    _listenToSensors();
   }
 
   Future<void> _fetchIssData() async {
@@ -80,6 +82,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  void _listenToSensors() {
+    accelerometerEvents.listen((AccelerometerEvent event) {
+      print('Accelerometer: $event');
+    });
+
+    gyroscopeEvents.listen((GyroscopeEvent event) {
+      print('Gyroscope: $event');
+    });
+
+    magnetometerEvents.listen((MagnetometerEvent event) {
+      print('Magnetometer: $event');
+    });
   }
 }
 
