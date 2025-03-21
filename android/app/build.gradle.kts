@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.galacti_app"
     compileSdk = 35
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.2.12479018"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
